@@ -1,0 +1,65 @@
+<div class="modal-container">
+
+<h5 class="mb-5 text-lg font-bold tracking-tight text-gray-900 dark:text-dark">Detalles del Proveedor</h5>
+<form [formGroup]="proveedorForm" class="form-grid w-full" (ngSubmit)="onSubmit()" novalidate>
+  <div>
+    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Nombre</label>
+    <input type="text" id="name" class="form-control" placeholder="Nombre" formControlName="name">
+    <div *ngIf="proveedorForm.get('name')?.hasError('required') && proveedorForm.get('name')?.touched" class="form-error">
+      Nombre es requerido
+    </div>
+  </div>
+  <div>
+    <label for="name_contact" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Contacto</label>
+    <input type="text" id="name_contact" class="form-control" placeholder="Contacto" formControlName="name_contact">
+    <div *ngIf="proveedorForm.get('name_contact')?.hasError('required') && proveedorForm.get('name_contact')?.touched" class="form-error">
+      Contacto es requerido
+    </div>
+  </div>
+  <div>
+    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Correo</label>
+    <input type="text" id="email" class="form-control" placeholder="Correo" formControlName="email">
+    <div *ngIf="proveedorForm.get('email')?.hasError('required') && proveedorForm.get('email')?.touched" class="form-error">
+      Correo es requerido
+    </div>
+  </div>
+  <div>
+    <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Dirección</label>
+    <input type="text" id="address" class="form-control" placeholder="Dirección" formControlName="address">
+    <div *ngIf="proveedorForm.get('address')?.hasError('required') && proveedorForm.get('address')?.touched" class="form-error">
+      Dirección es requerida
+    </div>
+  </div>
+  <div>
+    <label for="country" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Pais</label>
+    <input type="text" id="country" class="form-control" placeholder="Pais" formControlName="country">
+    <div *ngIf="proveedorForm.get('country')?.hasError('required') && proveedorForm.get('country')?.touched" class="form-error">
+      Pais es requerido
+    </div>
+  </div>
+  <div>
+    <label for="cp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Codigo Postal</label>
+    <input type="text" id="cp" class="form-control" placeholder="Codigo Postal" formControlName="cp">
+    <div *ngIf="proveedorForm.get('cp')?.hasError('required') && proveedorForm.get('cp')?.touched" class="form-error">
+      Codigo postal es requerido
+    </div>
+  </div>
+  <div>
+    <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Telefono</label>
+    <input type="text" id="phone" class="form-control" placeholder="Telefono" formControlName="phone">
+    <div *ngIf="proveedorForm.get('phone')?.hasError('required') && proveedorForm.get('phone')?.touched" class="form-error">
+      Telefono es requerido
+    </div>
+  </div>
+  <div class="buttons">
+    <button type="submit" class="submit-button">
+      Entregar
+    </button>
+    <button type="button" (click)="onClose()" class="cancel-button">
+      Cancelar
+    </button>
+  </div>
+</form>
+
+</div>
+

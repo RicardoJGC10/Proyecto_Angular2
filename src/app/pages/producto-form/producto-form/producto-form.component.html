@@ -1,0 +1,89 @@
+<div class="modal-container">
+    <h5 class="mb-5 text-lg font-bold tracking-tight text-gray-900 dark:text-dark,form-control">Detalles de producto</h5>
+    <form [formGroup]="productoForm" class="form-grid w-full" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Nombre</label>
+        <input type="text" id="name" placeholder="Nombre" formControlName="name" class="form-control" />
+        <div *ngIf="productoForm.get('name')?.invalid && productoForm.get('name')?.touched" class="text-danger">
+          Nombre es requerido
+        </div>
+      </div>
+  
+      <div>
+        <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Descripción</label>
+        <input type="text" id="description" placeholder="Descripción" formControlName="description" class="form-control" />
+        <div *ngIf="productoForm.get('description')?.invalid && productoForm.get('description')?.touched" class="text-danger">
+          Descripción es requerida
+        </div>
+      </div>
+  
+      <div>
+        <label for="cost" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Costo</label>
+        <input type="text" id="cost" class="form-control" placeholder="Costo" formControlName="cost">
+        <div *ngIf="productoForm.get('cost')?.hasError('required') && productoForm.get('cost')?.touched" class="form-error">
+          Costo es requerido
+        </div>
+      </div>
+  
+      <div>
+        <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Precio</label>
+        <input type="text" id="price" class="form-control" placeholder="Precio" formControlName="price">
+        <div *ngIf="productoForm.get('price')?.hasError('required') && productoForm.get('price')?.touched" class="form-error">
+          Precio es requerido
+        </div>
+      </div>
+  
+      <div>
+        <label for="available_quantity" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Cantidad disponible</label>
+        <input type="text" id="available_quantity" class="form-control" placeholder="Cantidad disponible" formControlName="available_quantity">
+        <div *ngIf="productoForm.get('available_quantity')?.hasError('required') && productoForm.get('available_quantity')?.touched" class="form-error">
+            Cantidad disponible es requerida
+        </div>
+      </div>
+  
+      <div>
+        <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Imagen</label>
+        <input type="file" id="image" (change)="onFileChange($event)" class="form-control" />
+        <div *ngIf="productoForm.get('image')?.hasError('required') && productoForm.get('image')?.touched" class="form-error">
+          Imagen es requerida
+        </div>
+        <div *ngIf="currentImageUrl">
+          <img [src]="currentImageUrl" alt="Current Image" width="100" (error)="onImageError()" />
+        </div>
+      </div>
+  
+      <div>
+        <label for="category">Categoria</label>
+        <select id="category" formControlName="category">
+          <option *ngFor="let categoria of categorias" [value]="categoria.id_categorie">
+            {{ categoria.name }}
+          </option>
+        </select>
+        <div *ngIf="productoForm.get('category')?.hasError('required') && productoForm.get('category')?.touched" class="form-error">
+            Categoria es requerida
+          </div>
+      </div>
+    
+      <div>
+        <label for="supplier">Proveedor</label>
+        <select id="supplier" formControlName="supplier">
+          <option *ngFor="let proveedor of proveedores" [value]="proveedor.id_supplier">
+            {{ proveedor.name }}
+          </option>
+        </select>
+        <div *ngIf="productoForm.get('supplier')?.hasError('required') && productoForm.get('supplier')?.touched" class="form-error">
+            Proveedor es requerido
+          </div>
+      </div>
+  
+      <div class="buttons">
+        <button type="submit" class="submit-button">
+          Entregar
+        </button>
+        <button type="button" (click)="onClose()" class="cancel-button">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+  

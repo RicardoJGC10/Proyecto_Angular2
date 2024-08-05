@@ -1,0 +1,47 @@
+/* model.component.css */
+.top-0 {
+    top: 0;
+  }
+  .left-0 {
+    left: 0;
+  }
+  .w-screen {
+    width: 100vw;
+  }
+  .h-screen {
+    height: 100vh;
+  }
+  .fixed {
+    position: fixed;
+  }
+  .flex {
+    display: flex;
+  }
+  .justify-center {
+    justify-content: center;
+  }
+  .items-center {
+    align-items: center;
+  }
+  .z-30 {
+    z-index: 30;
+  }
+  .bg-white {
+    background-color: white;
+  }
+  .rounded-lg {
+    border-radius: 0.5rem;
+  }
+  .p-6 {
+    padding: 1.5rem;
+  }
+  .w-1-4 {
+    width: 25%;
+  }
+  .bg-gray-900-60 {
+    background-color: rgba(17, 24, 39, 0.6);
+  }
+  .absolute {
+    position: absolute;
+  }
+  

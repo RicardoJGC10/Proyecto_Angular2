@@ -1,0 +1,39 @@
+<h5 class="mb-5 text-lg font-bold tracking-tight text-gray-900 dark:text-dark">Employee Details</h5>
+<form [formGroup]="empleadoForm" class="form-grid w-full" (ngSubmit)="onSubmit()" novalidate>
+  <div>
+    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Name</label>
+    <input type="text" id="name" class="form-control" placeholder="Name" formControlName="name">
+    <div *ngIf="empleadoForm.get('name')?.hasError('required') && empleadoForm.get('name')?.touched" class="form-error">
+      Name is required
+    </div>
+  </div>
+  <div>
+    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Email</label>
+    <input type="text" id="email" class="form-control" placeholder="E-Mail" formControlName="email">
+    <div *ngIf="empleadoForm.get('email')?.hasError('required') && empleadoForm.get('email')?.touched" class="form-error">
+      Email is required
+    </div>
+  </div>
+  <div>
+    <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Phone</label>
+    <input type="text" id="phone" class="form-control" placeholder="Phone" formControlName="phone">
+    <div *ngIf="empleadoForm.get('phone')?.hasError('required') && empleadoForm.get('phone')?.touched" class="form-error">
+      Phone is required
+    </div>
+  </div>
+  <div>
+    <label for="department" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Departament</label>
+    <input type="text" id="department" class="form-control" placeholder="Departament" formControlName="department">
+    <div *ngIf="empleadoForm.get('department')?.hasError('required') && empleadoForm.get('department')?.touched" class="form-error">
+      Departament is required
+    </div>
+  </div>
+  <div class="buttons">
+    <button type="submit" class="submit-button">
+      Submit
+    </button>
+    <button type="button" (click)="onClose()" class="cancel-button">
+      Cancel
+    </button>
+  </div>
+</form>

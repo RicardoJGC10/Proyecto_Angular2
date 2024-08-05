@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Responsive Admin Dashboard Template">
+  <meta name="keywords" content="admin,dashboard">
+  <meta name="author" content="stacks">
+  <title>Neptune - Responsive Admin Dashboard Template</title>
+
+  <!-- Styles -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+  <link href="/src/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/src/assets/plugins/perfectscroll/perfect-scrollbar.css" rel="stylesheet">
+  <link href="/src/assets/plugins/pace/pace.css" rel="stylesheet">
+  <link href="/src/assets/plugins/highlight/styles/github-gist.css" rel="stylesheet">
+  <link href="/src/assets/plugins/datatables/datatables.min.css" rel="stylesheet">
+
+  <!-- Theme Styles -->
+  <link href="/src/assets/css/main.min.css" rel="stylesheet">
+  <link href="/src/assets/css/custom.css" rel="stylesheet">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/src/assets/images/neptune.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/src/assets/images/neptune.png" />
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <div class="app align-content-stretch d-flex flex-wrap">
+    <app-sidebar></app-sidebar>
+    <app-header></app-header>
+  
+    <div class="app-container">
+      <div class="app-content">
+        <div class="content-wrapper">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col">
+                <div class="card">
+                  <div class="card-header">
+                    <h5 class="card-title">Compras</h5>
+                  </div>
+                  <div class="card-body">
+                    <div class="header-actions">
+                      <input type="text" placeholder="Buscar..." [(ngModel)]="searchQuery" (input)="filterVentas()" />
+                    </div>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Fecha</th>
+                            <th>Proveedor</th>
+                            <th>Total Venta</th>
+                            <th>Acciones</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of filteredVentas | paginate: { itemsPerPage: 10, currentPage: currentPage }; trackBy: trackById">
+                            <td>{{ item.date }}</td>
+                            <td>{{ getSupplierName(item.supplier) }}</td>
+                            <td>{{ item.total }}</td>
+                            <td>
+                              <button class="btn btn-edit" (click)="onEdit(item)">Detalles de Compra</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div>
+                      <pagination-controls class="pagination" (pageChange)="currentPage = $event"></pagination-controls>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal para Detalles de Venta -->
+    <div *ngIf="isModelOpen" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Detalles de Compra</h5>
+        <button type="button" class="close" (click)="isModelOpen = false" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="detallecomprasLis.length; else noDetails">
+          <div *ngFor="let detail of detallecomprasLis">
+            <p><strong>Producto:</strong> {{ getProductName(detail.product) }}</p>
+            <p><strong>Cantidad:</strong> {{ detail.quantity }}</p>
+            <p><strong>Precio Unitario:</strong> {{ detail.unit_price }}</p>
+            <hr />
+          </div>
+        </div>
+        <ng-template #noDetails>
+          <p>No hay detalles disponibles para esta venta.</p>
+        </ng-template>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="isModelOpen = false">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+</body>
+<app-footer></app-footer>
+
+</html>

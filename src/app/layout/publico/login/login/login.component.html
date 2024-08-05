@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Animated Login Form</title>
+  <link rel="stylesheet" href="/assets/css/themelogin.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+	<div class="container">
+		<div class="img">
+      <img [src]="myimage" alt="" class="background-image">
+
+		</div>
+		<div class="login-content" style="text-align: center;">
+			<form (ngSubmit)="onLogin()">
+				<img [src]="myimage2" alt="" class="background-image" style="width: 50px; height: auto; color: #FDA608;"><br>
+
+
+				<p class="title" style="color: white;  font-size: 18px;">Iniciar Sesión</p>
+				<br>
+           		<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-user"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<h5 style="color: #FFFFFF;"></h5>
+						<input type="email" id="email" [(ngModel)]="loginObj.username" name="email" class="form-control" placeholder="Usuario *" required #emails="ngModel" style="color: white; background-color: transparent;">
+
+						
+						
+           		   </div>
+           		</div>
+           		<div class="input-div pass">
+           		   <div class="i"> 
+           		    	<i class="fas fa-lock"></i>
+           		   </div>
+           		   <div class="div">
+           		    	<h5 style="color: #FFFFFF;"></h5>
+           		    	<input type="password" id="password" [(ngModel)]="loginObj.password" name="password" class="form-control" placeholder="Contraseña *" required #pass="ngModel" style="color: white; background-color: transparent;">
+            	   </div>
+            	</div><br><br>
+            	<input type="submit" class="btn" value="Aceptar" style="color: black;">
+				<br><br><br>
+				<p style="color: #FFFFFF;">Copyright &commat;<u>FEMSA.com</u> 2024.</p>
+
+
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>

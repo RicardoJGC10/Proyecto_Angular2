@@ -1,0 +1,40 @@
+<div class="app-sidebar">
+    <div class="logo">
+      <a class="logo-icon">
+        <span class="logo-text" style="color: white;">FERREMISO</span>
+      </a>
+      <div class="sidebar-user-switcher user-activity-online">
+        <a href="#">
+          <span class="user">
+            FERREMISO<br>
+            <span class="user-state-info">Punto de Venta</span>
+          </span>
+        </a>
+      </div>
+    </div>
+    <div class="app-menu">
+      <ul class="accordion-menu">
+        <li class="sidebar-title" style="color: white;">
+          Panel
+        </li>
+        <!-- Iteración de los elementos del menú -->
+        <li *ngFor="let item of menuItems"
+            [ngClass]="{'active-page': selectedMenuItem === item}" (click)="selectMenuItem(item)">
+          <a class="horizontal-align" [routerLink]="item.link" routerLinkActive="active-page">
+            <img [src]="item.icon"
+                 class="colored-icon small-icon"
+                 [style.filter]="selectedMenuItem === item ? activeIconFilter : ''" />
+            {{ item.label }}
+          </a>
+        </li>
+        <br><br><br><br>
+        <li>
+          <a href="#" (click)="logout()" class="horizontal-align">
+            <img src="/assets/img/logout.png" class="colored-icon small-icon">
+            Cerrar Sesion
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  

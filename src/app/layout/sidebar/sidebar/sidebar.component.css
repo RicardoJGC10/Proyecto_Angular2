@@ -1,0 +1,56 @@
+.app-sidebar {
+    background-color: #1A1A1A;
+}
+.app-menu {
+    background-color: #1A1A1A;
+}
+.logo {
+    background-color: #1A1A1A;
+}
+.user-state-info {
+    color: #FFFFFF;
+}
+.user {
+    color: #FFFFFF;
+}
+.horizontal-align {
+    display: flex;
+    align-items: center; /* Alinea los elementos hijos al centro verticalmente */
+}
+
+.colored-icon {
+    margin-right: 10px; /* Añade un margen derecho para espacio entre la imagen y el texto */
+}
+
+.small-icon {
+    width: 24px;  /* Ajusta el ancho según sea necesario */
+    height: 24px; /* Ajusta la altura según sea necesario */
+}
+.accordion-menu li.active-page a {
+    background-color: #343a40;
+    color: #FDA608; /* Color activo */
+    border-radius: 4px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+  
+  .accordion-menu li a {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .accordion-menu li a:hover {
+    background-color: #444;
+  }
+  
+  .colored-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    transition: filter 0.3s ease-in-out;
+  }
+  
+

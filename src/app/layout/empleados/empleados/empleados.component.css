@@ -1,0 +1,25 @@
+
+/* Estilo para header y tarjetas */
+app-header {
+    margin-bottom: -150px;
+    padding-bottom: -150px;
+}
+
+.card {
+    margin-top: 0px;
+}
+.btn-edit {
+    background-color: #1A1A1A;
+    color: #FFFFFF;
+    
+}
+.btn-delete {
+    background-color: #FDA608;
+    color: #1A1A1A;
+    
+}
+.add_new {
+    background-color: #FDA608;
+    color: #1A1A1A;
+}
+

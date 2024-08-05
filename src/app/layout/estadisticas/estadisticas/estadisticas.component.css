@@ -1,0 +1,11 @@
+
+
+/* Estilo para header y tarjetas */
+app-header {
+    margin-bottom: -150px;
+    padding-bottom: -150px;
+}
+
+.card {
+    margin-top: 0px;
+}

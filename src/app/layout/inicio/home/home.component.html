@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pagina</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+</head>
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="background-color: #FDA608;">
+        <div class="container">
+            <a href="#" class="navbar-brand">
+                <span class="text-white">Ferremiso</span>
+                <img src="/assets/img/FERREMISO_LOGO.png" alt="Logo" class="logo-img">
+                
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbar-start" aria-controls="navbar-start" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar-start">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link"  (click)="scrollToSection('seccion1')">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="scrollToSection('seccion2')" >Ubicacion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"  (click)="scrollToSection('seccion3')">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"  (click)="scrollToSection('seccion4')">Contactanos</a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+
+    
+
+
+    <div id="carouselE1" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselE1"
+                    data-bs-slide-to="0" class="active" aria-current="true"
+                    aria-label="Slide 1"
+            ></button>
+            <button type="button" data-bs-target="#carouselE1"
+            data-bs-slide-to="1" 
+            aria-label="Slide 2"
+            ></button>
+            <button type="button" data-bs-target="#carouselE1"
+            data-bs-slide-to="2" 
+            aria-label="Slide 3"
+            ></button>
+        </div>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../assets/img/fondo1.png" class="d-block w-100" alt="">
+                <div class="carousel-caption">
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="../assets/img/fondo2.png" class="d-block w-100" alt="">
+                <div class="carousel-caption">
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="../assets/img/fondo3.png" class="d-block w-100" alt="">
+                <div class="carousel-caption">                
+                </div>
+            </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselE1"
+                 data-bs-slide="prev">
+             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+             <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselE1"
+                 data-bs-slide="next"
+        >
+           <span class="carousel-control-next-icon" aria-hidden="true"></span>
+           <span class="visually-hidden">Next</span>
+        </button>
+
+    </div>
+
+    <section class="services" id="seccion3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="secction-header text-center pb-5">
+                        <h2>Acerca de Nosotros</h2>
+                        
+                    </div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-4 mb-3">
+                    <div class="card text-white text-center bg-car1 pb-2">
+                        <div class="card-body">
+                          
+                        </div>
+                    </div>
+                    <div class="card-text below-card-text">
+                        <br> <h3>Nuestra empresa</h3>
+                        <br> <p class="bold-text"> Somos una empresa encargada de brindar un<br>
+                            mejor servicio al cliente.</p>
+                     </div>
+                </div>
+
+                <div class="col-12 col-md-12 col-lg-4 mb-3">
+                    <div class="card text-white text-center bg-car2 pb-2">
+                        <div class="card-body">
+                            
+                        </div>
+                    </div>
+                    <div class="card-text below-card-text">
+                       <br> <h3>100% Confiables</h3>
+                       <br> <p class="bold-text"> Ofrecemos un servicio confiable <br>
+                        con nuestros productos de alta calidad.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-12 col-lg-4 mb-3">
+
+                    <div class="card text-white text-center bg-car3 pb-2">
+                        <div class="card-body">
+                        
+                        </div>
+                    </div>
+                    <div class="card-text below-card-text">
+                        <br> <h3>Acerca de Nuestros productos</h3>
+                        <br> <p  class="bold-text"> Contamos con una amplia categoria de<br>
+                            productos para ofrecer a nuestros clientes.</p>
+                     </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+
+    <section class="section-icons">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-12 col-md col-lg-4 box-icons">
+                    <div class="d-flex align-items-center">
+                        <div class="ms-4">                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md col-lg-4 box-icons">
+                    <div class="d-flex align-items-center">
+                        <div class="ms-4">
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md col-lg-4 box-icons">
+                    <div class="d-flex align-items-center">
+                        <div class="ms-4">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="seccion1" class="naturix-goods sec-space light-bg">
+        <div class="container">  
+          <section class="gallery-section">
+            <div class="title-wrap">
+              <h2 class="section-title">
+                <span class="light-font">LO</span>
+                <strong> MAS VENDIDO<img src="" alt="" /></strong>
+              </h2>
+            </div>
+            
+            <div class="gallery">
+              <div class="gallery-item" *ngFor="let producto of productos">
+                <img [src]="producto.image" [alt]="producto.name" />
+                <div class="gallery-info">
+                  <h3 class="product-name">{{ producto.name }}</h3>
+                  <p class="product-price">{{ producto.price | currency }}</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+    </section>
+      
+   
+<section class="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Somos una empresa reconocida</h2>
+                
+                <div class="logo-container">
+                    <img class="logo-img" src="../assets/img/FERREMISO_LOGO.png" alt="Logo de Ferremiso">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    <section class="naturix-quality sec-space-bottom">
+
+        <div class="container"> 
+
+            <div class="food-quality block-inline mx-auto">
+                <div class="row">
+                    <div class="col-md-4 pt-50"> 
+                        <div class="left"> 
+                            <div class="quality-img"> 
+                                <img alt="" src="assets/ferre/servicio.png" />
+                            </div>
+                            <div class="quality-caption"> 
+                                <h2 class="title-1">Servicios</h2>
+                                <span class="divider-2"></span>
+                                <p>Ofrecemos un gran servicio al cliente.</p>
+                            </div>                               
+                        </div>
+                        <div class="left"> 
+                            <div class="quality-img"> 
+                                <img alt="" src="assets/ferre/calidad.png" />
+                            </div>
+                            <div class="quality-caption"> 
+                                <h2 class="title-1">Calidad</h2>
+                                <span class="divider-2"></span>
+                                <p>Tenemos los mejores productos.</p>
+                            </div>                               
+                        </div>
+                        <div class="left"> 
+                            <div class="quality-img"> 
+                                <img alt="" src="assets/ferre/confiable.png" />
+                            </div>
+                            <div class="quality-caption"> 
+                                <h2 class="title-1">100% Confiable</h2>
+                                <span class="divider-2"></span>
+                                <p>Nuestros productos de alta calidad.</p>
+                            </div>                               
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center"> 
+                        <img alt="" src="assets/ferre/WhatsApp Image 2024-06-20 at 9.35.04 PM (1)-modified.png">
+                    </div>
+                    <div class="col-md-4 pt-50"> 
+                        <div class="right"> 
+                            <div class="quality-img"> 
+                                <img alt="" src="assets/ferre/categoria .png" />
+                            </div>
+                            <div class="quality-caption"> 
+                                <h2 class="title-1">Categoría</h2>
+                                <span class="divider-2"></span>
+                                <p>Abarcamos una amplia categoría.</p>
+                            </div> 
+                        </div>
+                        <div class="right"> 
+                            <div class="quality-img"> 
+                                <img alt="" src="assets/ferre/descargar.pgn.jpg" />
+                            </div>
+                            <div class="quality-caption"> 
+                                <h2 class="title-1">Super Precios</h2>
+                                <span class="divider-2"></span>
+                                <p>Contamos con grandes ofertas para nuestros clientes.</p>
+                            </div> 
+                        </div>
+                        <div class="right"> 
+                            <div class="quality-img"> 
+                                <img alt="" src="assets/ferre/garantia.png" />
+                            </div>
+                            <div class="quality-caption"> 
+                                <h2 class="title-1">Garantía</h2>
+                                <span class="divider-2"></span>
+                                <p>Garantizamos un servicio único a nuestros clientes.</p>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+                         
+        </div>
+    </section>
+
+    <section id="seccion2" class="contact-wrap sec-space-bottom">
+        <div class="container rel-div pt-50">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509317!2d144.96305791531595!3d-37.81627974202165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf0727d8a262ff1d0!2sFederation%20Square!5e0!3m2!1sen!2sau!4v1649329393298!5m2!1sen!2sau" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="col-md-4" id="contact">
+                    <h1>Nuestra Ubicacion</h1>
+                    <p>Ponte en contacto con nosotros.</p>
+                    <div class="contact-details">
+                        <h5 class="clr-txt fsz-12 pt-15"></h5>
+                        <ul>
+                            <li><strong>Direccion:</strong> <i>Carr. Torreón - Matamoros, Felipe Ángeles, 27080 Torreón, Coah.</i></li>
+                            <li><strong>Horarios:</strong>
+                                <ul>
+                                    <li><p>Martes 10 a.m.–7 p.m.</p></li>
+                                    <li><p>Miércoles 10 a.m.–7 p.m.</p></li>
+                                    <li><p>Jueves 10 a.m.–7 p.m.</p></li>
+                                    <li><p>Viernes 10 a.m.–7 p.m.</p></li>
+                                    <li><p>Sábado 9:30 a.m.–2:30 p.m.</p></li>
+                                    <li><p>Domingo Cerrado</p></li>
+                                    <li><p>Lunes 10 a.m.–7 p.m.</p></li>
+                                </ul>
+                            </li>
+                            <li><strong>Telefono:</strong> <i>871 793 4094</i></li>
+                            <li><strong>Facebook:</strong> <i><a href='https://www.facebook.com/p/Ferremiso-100075768108202/'>Ferremiso</a></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    
+            
+    
+        </div>
+    </section>
+    
+
+
+
+
+
+   
+    
+    <section class="contact" id="seccion4">
+
+        <div class="container mb-3 mb-lg-5">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="secction-header text-center pb-2 pb-lg-5">
+                        <h2>Contacto</h2>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <div class="col-12 col-md-12 col-lg-6 pt-4 pb-4">
+                    <form action="#" class="bg-light p-4 m-auto shadow-sm">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <input class="form-control" placeholder="Nombre" type="text" required>
+                                </div>
+
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <input class="form-control" placeholder="Email" type="email" required>
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <textarea class="form-control" placeholder="Mensaje" rows="3" required></textarea>
+                                </div>
+                            </div>
+                            <button class="btn-lg btn-block mt-3" type="button" style="background-color: #FDA608;">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="p-2 text-center" style="background-color: #FDA608;">
+        <div class="container">
+            <p class="text-">Todos los derechos reservados</p>
+
+        </div>
+
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+</body>
+</html>

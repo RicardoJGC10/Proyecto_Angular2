@@ -1,0 +1,29 @@
+<div class="modal-container">
+
+<h5 class="mb-5 text-lg font-bold tracking-tight text-gray-900 dark:text-dark">Detalles de la Categoria</h5>
+ <form [formGroup]="categoriaForm" class="form-grid w-full" (ngSubmit)="onSubmit()" novalidate>
+  <div>
+    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Nombre</label>
+    <input type="text" id="name" class="form-control" placeholder="Nombre" formControlName="name">
+    <div *ngIf="categoriaForm.get('name')?.hasError('required') && categoriaForm.get('name')?.touched" class="form-error">
+      Nombre es requerido
+    </div>
+  </div>
+  <div>
+    <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Descripción</label>
+    <input type="text" id="description" class="form-control" placeholder="Descripción" formControlName="description">
+    <div *ngIf="categoriaForm.get('description')?.hasError('required') && categoriaForm.get('description')?.touched" class="form-error">
+      Descripción es requerida
+    </div>
+  </div>
+  <div class="buttons">
+    <button type="submit" class="submit-button">
+      Entregar
+    </button>
+    <button type="button" (click)="onClose()" class="cancel-button">
+      Cancelar
+    </button>
+  </div>
+ </form>
+</div>
+

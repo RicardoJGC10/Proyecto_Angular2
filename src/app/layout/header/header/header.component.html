@@ -1,11 +1,4 @@
-
-    
-
-
 <div class="app header-colorful align-content-stretch d-flex flex-wrap">
-    
-    
-    
     <div class="app-container">
         <div class="search">
             <form>
@@ -19,14 +12,16 @@
                     <div class="navbar-nav" id="navbarNav">
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item">
-                                <a class="nav-link hide-sidebar-toggle-button" href="#"><i class="material-icons">first_page</i></a>
+                                <a class="nav-link hide-sidebar-toggle-button" (click)="toggleSidebar()">
+                                    <i class="material-icons">first_page</i>
+                                </a>
                             </li>
                         </ul>
                     </div>
 
                     <div class="d-flex">
                         <ul class="navbar-nav">
-                            
+                            <!-- Otros elementos de la barra de navegación -->
                         </ul>
                     </div>
                 </div>
@@ -38,16 +33,22 @@
                     <div class="row">
                         <div class="col">
                             <div class="page-description">
-                                <h1>Bienvenido, {{ firstName }} {{lastName}}</h1>
+                                <h1>Welcome, {{ firstName }} {{ lastName }}</h1>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
+                            <!-- Contenido adicional -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Barra lateral -->
+    <div class="sidebar" [class.collapsed]="isCollapsed">
+        <!-- Contenido de la barra lateral -->
     </div>
 </div>

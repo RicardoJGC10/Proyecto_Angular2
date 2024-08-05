@@ -12,6 +12,8 @@ import { AuthService } from '../../../auth-service.service';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+  isCollapsed: boolean = false;
+
   firstName: string = '';
 
   lastName: string = '';
@@ -33,6 +35,10 @@ export class HeaderComponent {
     this.router.navigate(['/login']); // Redirige a la vista de login después del cierre de sesión
 
   }
+  toggleSidebar() {
+  this.isCollapsed = !this.isCollapsed;
+}
+
 
 
 }

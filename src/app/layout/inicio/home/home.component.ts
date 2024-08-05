@@ -12,7 +12,7 @@ import { ProductoService } from '../../servicios/producto.service';
 })
 export class HomeComponent implements OnInit {
   productos: ProductosInterface[] = [];
-  baseUrl = 'http://143.198.70.194/'; // Asegúrate de que sea la URL base correcta
+  baseUrl = 'https://143.198.70.194/'; // Asegúrate de que sea la URL base correcta
 
   constructor(private productosService: ProductoService) { }
 

@@ -1,20 +1,52 @@
 .same-size-card {
-    min-height: 200px; /* Ajusta esta altura según sea necesario */
+  min-height: 200px; /* Ajusta esta altura según sea necesario */
 }
 
 /* styles.css */
 .btn-custom-red {
-    background-color: red;
-    color: white;
-    border: 1px solid red;
-  }
-  
-  .btn-custom-red:hover {
-    background-color: darkred;
-    border-color: darkred;
-  }
-  
-  
+  background-color: red;
+  color: white;
+  border: 1px solid red;
+}
 
-  
-  
+.btn-custom-red:hover {
+  background-color: darkred;
+  border-color: darkred;
+}
+
+
+.search {
+  transition: max-height 0.3s ease;
+}
+
+.search.collapsed {
+  max-height: 0;
+  overflow: hidden;
+}
+/* Estilo para la barra lateral */
+.sidebar {
+width: 250px; /* Ajusta el ancho según tu diseño */
+transition: width 0.3s;
+/* Otras reglas de estilo para la barra lateral */
+}
+
+/* Barra lateral colapsada */
+.sidebar.collapsed {
+width: 0;
+overflow: hidden;
+/* Otras reglas de estilo para el estado colapsado */
+}
+
+/* Asegúrate de que el botón esté siempre visible */
+.hide-sidebar-toggle-button {
+position: fixed; /* Oposición fija según tu diseño */
+top: 0;
+left: 0; /* Ajusta según el diseño */
+z-index: 1000; /* Asegúrate de que el botón esté encima de otros elementos */
+/* Otras reglas de estilo para el botón */
+}
+
+
+
+
+

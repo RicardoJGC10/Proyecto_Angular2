@@ -9,7 +9,7 @@ import { DetalleVentasInterface } from '../../modelos/detalleventas.interface';
 })
 export class VentasService {
 
-  API_URL: string = 'http://143.198.70.194/ventas/';
+  API_URL: string = 'https://143.198.70.194/ventas/';
   
   constructor(private httpClient: HttpClient) { }
 

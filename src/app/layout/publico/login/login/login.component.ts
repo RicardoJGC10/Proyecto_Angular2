@@ -38,7 +38,7 @@ export class LoginComponent {
 
 
   onLogin() {
-    this.http.post('http://143.198.70.194/login/', this.loginObj).subscribe(
+    this.http.post('https://143.198.70.194/login/', this.loginObj).subscribe(
       (res: any) => {
         console.log('Response from server:', res);
         if (res.access) {

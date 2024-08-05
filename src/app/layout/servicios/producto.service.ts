@@ -8,7 +8,7 @@ import { ApiResponse, ProductosInterface } from '../../modelos/productos.interfa
   providedIn: 'root'
 })
 export class ProductoService {
-  private API_URL = 'http://143.198.70.194/api/productos/';
+  private API_URL = 'https://143.198.70.194/api/productos/';
 
   constructor(private http: HttpClient) {}
 

@@ -18,6 +18,8 @@ import { SalesService } from '../../servicios/sales.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  isCollapsed: boolean = false;
+
   topProductName: string = 'Producto';
   quantitySold: number = 0;
   totalSales: number = 0;
@@ -85,5 +87,10 @@ export class DashboardComponent implements OnInit {
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/login']);
+  }
+
+  toggleSidebar() {
+    console.log('Sidebar toggle clicked');
+    this.isCollapsed = !this.isCollapsed;
   }
 }

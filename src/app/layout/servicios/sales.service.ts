@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class SalesService {
 
-  private apiUrl = 'http://143.198.70.194/api/total_sales_today/'; // URL de la API
+  private apiUrl = 'https://143.198.70.194/api/total_sales_today/'; // URL de la API
 
 
   constructor(private http: HttpClient) { }

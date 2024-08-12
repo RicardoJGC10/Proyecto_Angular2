@@ -144,7 +144,7 @@ export class ProductoFormComponent implements OnChanges {
         this.toastrService.error('Categoría o proveedor no válido');
       }
     } else {
-      this.toastrService.error('Por favor complete todos los campos correctamente');
+      this.toastrService.warning('Por favor complete todos los campos correctamente');
       this.productoForm.markAllAsTouched();
     }
   }

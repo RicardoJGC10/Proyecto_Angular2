@@ -134,7 +134,7 @@ export class EmpleadosFormComponent implements OnChanges {
       });
     }
   } else {
-    this.toastrService.warning('Please fill out all fields correctly');
+    this.toastrService.warning('Por favor complete todos los campos correctamente');
     this.empleadoForm.markAllAsTouched();
   }
 }

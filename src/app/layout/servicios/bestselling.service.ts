@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class BestsellingService {
 
-  private apiUrl = 'https://143.198.70.194/api/best-selling-and-low-stock-products/';
+  private apiUrl = 'https://seguridadenaplicaciones.site/api/best-selling-and-low-stock-products/';
 
 
   constructor(private http: HttpClient) { }

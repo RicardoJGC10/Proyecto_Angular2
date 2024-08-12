@@ -127,7 +127,7 @@ export class ProductosComponent implements OnInit {
   getImageUrl(imagePath: string): string {
     // Elimina cualquier barra inicial del path de la imagen, si existe
     const cleanedPath = imagePath.startsWith('/') ? imagePath.slice(1) : imagePath;
-    const url = `http://143.198.70.194/${cleanedPath}`;
+    const url = `https://seguridadenaplicaciones.site/${cleanedPath}`;
     return url;
   }
 

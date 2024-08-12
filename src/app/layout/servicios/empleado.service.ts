@@ -13,7 +13,7 @@ interface ApiResponse<T> {
   providedIn: 'root'
 })
 export class EmpleadoService {
-  private API_URL = 'https://143.198.70.194/employees/';
+  private API_URL = 'https://seguridadenaplicaciones.site/employees/';
 
   constructor(private http: HttpClient) { }
 

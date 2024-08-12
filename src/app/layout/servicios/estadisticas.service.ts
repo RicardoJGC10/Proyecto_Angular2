@@ -5,14 +5,13 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class SalesService {
-
-  private apiUrl = 'https://seguridadenaplicaciones.site/api/total_sales_today/'; // URL de la API
+export class EstadisticasService {
+  private apiUrl = 'https://seguridadenaplicaciones.site/api/totalsalesandclients/';
 
 
   constructor(private http: HttpClient) { }
 
-  getDailySales(): Observable<any> {
+  getSalesData(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
   }
 }

@@ -1,8 +1,13 @@
 .app-sidebar {
     background-color: #1A1A1A;
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+    display: flex;
+    flex-direction: column;
 }
 .app-menu {
     background-color: #1A1A1A;
+    flex-grow: 1;
+    overflow-y: auto; /* Añade scroll vertical */
 }
 .logo {
     background-color: #1A1A1A;

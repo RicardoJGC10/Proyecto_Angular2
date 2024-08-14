@@ -10,11 +10,15 @@
     height: auto; /* Permite que la altura se ajuste automáticamente */
 }
 
-
 .gallery {
-    flex-wrap: wrap; /* Permite que las imágenes se envuelvan a la siguiente línea si no hay suficiente espacio */
-    gap: 10px; /* Espacio entre las imágenes */
-  }
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 10px; /* Ajusta el espacio entre las imágenes si es necesario */
+}
+
+
+
+
   
   .gallery-item {
     flex: 1 1 calc(20% - 10px); /* Ajusta el ancho de las imágenes para que quepan 5 en una fila con un espacio de 10px entre ellas */

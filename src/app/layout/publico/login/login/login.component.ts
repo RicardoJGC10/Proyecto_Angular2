@@ -36,9 +36,8 @@ export class LoginComponent {
     }
   }
 
-
   onLogin() {
-    this.http.post('https://seguridadenaplicaciones.site/login/', this.loginObj).subscribe(
+    this.http.post('https://seguridadenaplicaciones.site/api/login/', this.loginObj).subscribe(
       (res: any) => {
         console.log('Response from server:', res);
         if (res.access) {
@@ -47,7 +46,6 @@ export class LoginComponent {
             console.log(res.user.first_name);
             this.userService.setFirstName(res.user.first_name);
             this.userService.setLastName(res.user.last_name);
-
           } else {
             console.error('User is not present in the response');
           }
@@ -61,12 +59,18 @@ export class LoginComponent {
           alert('Unauthorized');
         } else if (error.status === 400) {
           alert('No puede haber campos vacíos');
+        } else if (error.status === 403) {
+          alert('Usuario no autorizado');
         } else {
           alert('An error occurred during login. Please try again.');
         }
       }
     );
   }
+  
+
+
+ 
 
   myimage: string = "images/Logo.png";
   myimage2: string = "images/bloqueo.png";

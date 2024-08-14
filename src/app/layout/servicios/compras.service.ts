@@ -9,7 +9,7 @@ import { DetalleComprasInterface } from '../../modelos/detallecompras.interface'
 })
 export class ComprasService {
 
-  API_URL: string = 'https://seguridadenaplicaciones.site/purchases/';
+  API_URL: string = 'https://seguridadenaplicaciones.site/api/purchases/';
 
 
   constructor(private httpClient: HttpClient) { }

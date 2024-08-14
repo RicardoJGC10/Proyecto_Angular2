@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar Test</title>
+    <style>
+        .app-sidebar {
+            width: 250px;
+            background-color: #333;
+            transition: width 0.3s;
+        }
+
+        .app-sidebar.collapsed {
+            width: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-sidebar">
+        Sidebar Content
+    </div>
+    <button onclick="document.querySelector('.app-sidebar').classList.toggle('collapsed')">Toggle Sidebar</button>
+</body>
+</html>

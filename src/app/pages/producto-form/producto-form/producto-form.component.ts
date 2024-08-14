@@ -21,6 +21,7 @@ export class ProductoFormComponent implements OnChanges {
   @Output() onCloseModel = new EventEmitter();
   productoForm: FormGroup;
   currentImageUrl: string | null = null;
+  currentImageName: string | null = null;
   categorias: CategoriasInterface[] = [];
   proveedores: ProveedoresInterface[] = [];
 
@@ -37,9 +38,10 @@ export class ProductoFormComponent implements OnChanges {
       cost: ['', Validators.required],
       price: ['', Validators.required],
       available_quantity: ['', Validators.required],
-      image: [null, Validators.required],
+      image: [null],
       category: ['', Validators.required],
       supplier: ['', Validators.required],
+      image_name: [''] // Campo adicional para mantener el nombre de la imagen
     });
   }
 
@@ -55,7 +57,9 @@ export class ProductoFormComponent implements OnChanges {
 
   ngOnChanges(): void {
     if (this.data) {
-      this.currentImageUrl = this.data.image ? `http://143.198.70.194/${this.data.image}` : null;
+      this.currentImageUrl = this.data.image ? `https://seguridadenaplicaciones.site${this.data.image}` : null;
+      this.currentImageName = this.data.image ? this.data.image.split('/').pop() ?? null : null;
+
       this.productoForm.patchValue({
         name: this.data.name,
         description: this.data.description,
@@ -64,21 +68,13 @@ export class ProductoFormComponent implements OnChanges {
         available_quantity: this.data.available_quantity,
         category: this.data.category,
         supplier: this.data.supplier,
+        image_name: this.currentImageName ? this.currentImageName : '' 
       });
-
-      // Clear image validation if updating an existing product
-      if (this.data.id_product) {
-        this.productoForm.get('image')?.clearValidators();
-        this.productoForm.get('image')?.updateValueAndValidity();
-      } else {
-        // Set image as required for creating a new product
-        this.productoForm.get('image')?.setValidators([Validators.required]);
-        this.productoForm.get('image')?.updateValueAndValidity();
-      }
     } else {
-      // Clean form when there's no data
       this.productoForm.reset();
+      this.resetFileInput();  // Resetear el campo de archivo
       this.currentImageUrl = null;
+      this.currentImageName = null;
     }
   }
 
@@ -94,7 +90,6 @@ export class ProductoFormComponent implements OnChanges {
       const category = parseInt(formValue.category, 10);
       const supplier = parseInt(formValue.supplier, 10);
 
-      // Check if category and supplier are valid
       if (!isNaN(category) && !isNaN(supplier)) {
         formData.append('name', formValue.name);
         formData.append('description', formValue.description);
@@ -107,19 +102,15 @@ export class ProductoFormComponent implements OnChanges {
         const imageFile = this.productoForm.get('image')?.value;
         if (imageFile instanceof File) {
           formData.append('image', imageFile, imageFile.name);
-        } else if (!this.data?.id_product) {
-          // For POST, ensure image is provided
-          this.toastrService.error('Image is required for new products');
-          return;
+        } else if (formValue.image_name) {
+          formData.append('image_name', formValue.image_name); 
         }
 
         if (this.data?.id_product) {
           this.productoService.updateCategoria(this.data.id_product, formData).subscribe({
             next: () => {
               this.toastrService.success('Producto actualizado exitosamente');
-              this.productoForm.reset();
-              this.currentImageUrl = null;
-              this.onClose();
+              this.resetFormAfterSubmit(); // Resetear el formulario después de la actualización
             },
             error: (err) => {
               console.error('Error updating product:', err);
@@ -130,9 +121,7 @@ export class ProductoFormComponent implements OnChanges {
           this.productoService.createCategoria(formData).subscribe({
             next: () => {
               this.toastrService.success('Producto creado exitosamente');
-              this.productoForm.reset();
-              this.currentImageUrl = null;
-              this.onClose();
+              this.resetFormAfterSubmit(); // Resetear el formulario después de la creación
             },
             error: (err) => {
               console.error('Error creating product:', err);
@@ -149,17 +138,36 @@ export class ProductoFormComponent implements OnChanges {
     }
   }
 
+  // Método para resetear el campo de archivo
+  resetFileInput() {
+    const fileInput = document.getElementById('image') as HTMLInputElement;
+    if (fileInput) {
+      fileInput.value = '';  // Resetear el valor del input
+    }
+  }
+
+  // Método para resetear el formulario y el campo de archivo después de la creación/edición
+  resetFormAfterSubmit() {
+    this.productoForm.reset();
+    this.currentImageUrl = null;
+    this.currentImageName = null;
+    this.resetFileInput(); // Resetear el campo de archivo
+    this.onClose();
+  }
+
   onFileChange(event: any) {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
       this.productoForm.patchValue({
         image: file
       });
-      this.currentImageUrl = null;
+      this.currentImageUrl = URL.createObjectURL(file);
+      this.currentImageName = file.name;
     }
   }
 
   onImageError() {
     this.currentImageUrl = null;
+    this.currentImageName = null;
   }
 }

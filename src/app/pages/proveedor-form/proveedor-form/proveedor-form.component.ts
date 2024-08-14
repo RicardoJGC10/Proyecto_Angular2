@@ -98,27 +98,37 @@ export class ProveedorFormComponent implements OnChanges {
     if (this.data && this.data.id_supplier) {
       console.log('Updating existing category');
       // Actualización de categoría existente
-      this.proveedorService
-        .updateCategoria(this.data.id_supplier, proveedorData)
-        .subscribe({
-          next: (response) => {
-            const updatedProveedor = response.data;
-            const index = this.registros.findIndex(
-              (r) => r.id_supplier === this.data!.id_supplier
-            );
-            if (index !== -1) {
-              this.registros[index] = updatedProveedor;
-              this.ordenarRegistros(); // Ordenar por id después de actualizar
-            }
-            this.toastrService.success('Categoría actualizada exitosamente');
-            this.proveedorForm.reset();
-            this.onClose();
-          },
-          error: (err) => {
-            console.error('Error updating category:', err);
-            this.toastrService.error('Error al actualizar la categoría');
-          },
-        });
+      this.proveedorService.updateCategoria(this.data.id_supplier, proveedorData)
+  .subscribe({
+    next: (response: any) => {
+      console.log('Respuesta completa del servidor:', response);
+
+      const updatedProveedor = response.data ? response.data : response;
+
+      if (updatedProveedor && updatedProveedor.id_supplier) {
+        const index = this.registros.findIndex(
+          (r) => r.id_supplier === updatedProveedor.id_supplier
+        );
+        if (index !== -1) {
+          this.registros[index] = updatedProveedor;
+          this.ordenarRegistros();
+        } else {
+          console.error('Proveedor no encontrado en la lista.');
+        }
+        this.toastrService.success('Proveedor actualizado exitosamente');
+        this.proveedorForm.reset();
+        this.onClose();
+      } else {
+        console.error('Error: La respuesta del servidor no contiene datos válidos.');
+        this.toastrService.error('Error al actualizar el proveedor.');
+      }
+    },
+    error: (err) => {
+      console.error('Error actualizando proveedor:', err);
+      this.toastrService.error('Error al actualizar el proveedor');
+    }
+  });
+
     } else {
       console.log('Creating new category');
       // Creación de nueva categoría

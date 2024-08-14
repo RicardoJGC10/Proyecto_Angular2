@@ -78,20 +78,27 @@ export class ProductosComponent implements OnInit {
     // Obtener categorías
     this.categoriaService.getCategorias().subscribe({
       next: (result) => {
+        console.log('Categorias:', result);
         this.categorias = result;
       },
       error: (err) => {
         console.error('Error fetching categories:', err);
+        this.toastService.error('No se pudieron cargar las categorías.');
+
+
       }
     });
 
     // Obtener proveedores
     this.proveedorService.getProveedores().subscribe({
       next: (result) => {
+        console.log('Proveedores:', result);
         this.proveedores = result;
       },
       error: (err) => {
         console.error('Error fetching suppliers:', err);
+        this.toastService.error('No se pudieron cargar los proveedores.');
+
       }
     });
   }
@@ -122,14 +129,22 @@ export class ProductosComponent implements OnInit {
   
     this.currentPage = 1;
   }
-  
 
   getImageUrl(imagePath: string): string {
+    if (!imagePath) {
+      // Retorna una URL de una imagen predeterminada si el campo imagePath es null o undefined
+      return 'assets/images/default-image.jpg'; // Cambia la ruta a la de tu imagen predeterminada
+    }
+  
     // Elimina cualquier barra inicial del path de la imagen, si existe
     const cleanedPath = imagePath.startsWith('/') ? imagePath.slice(1) : imagePath;
     const url = `https://seguridadenaplicaciones.site/${cleanedPath}`;
     return url;
   }
+  
+  
+
+
 
   trackById(index: number, item: ProductosInterface): string {
     return item.id_product ?? '';

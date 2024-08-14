@@ -32,7 +32,9 @@ export class HomeComponent implements OnInit {
       next: (result) => {
         this.productos = result.map(producto => ({
           ...producto,
-          image: this.baseUrl + producto.image
+          image: producto.image ? 
+                 (producto.image.startsWith('http') ? producto.image : this.baseUrl + producto.image) 
+                 : 'assets/images/imagen-predeterminada.jpg' // Ruta correcta a la imagen predeterminada
         }));
         console.log(this.productos); // Verifica las URLs de las imágenes
       },
@@ -41,4 +43,5 @@ export class HomeComponent implements OnInit {
       }
     });
   }
+
 }

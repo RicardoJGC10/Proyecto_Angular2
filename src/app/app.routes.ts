@@ -14,6 +14,7 @@ import { ProveedoresComponent } from './layout/proveedores/proveedores/proveedor
 import { ProductosComponent } from './layout/productos/productos/productos.component';
 import { VentasComponent } from './layout/ventas/ventas/ventas.component';
 import { ComprasComponent } from './layout/compras/compras/compras.component';
+import { PruebasComponent } from './layout/pruebas/pruebas.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -28,6 +29,8 @@ export const routes: Routes = [
   { path: 'productos', component: ProductosComponent, canActivate:[AuthGuard] },
   { path: 'ventas', component: VentasComponent, canActivate:[AuthGuard] },
   { path: 'compras', component: ComprasComponent, canActivate:[AuthGuard] },
+  { path: 'pruebas', component: PruebasComponent, canActivate:[AuthGuard] },
+
 
 
 

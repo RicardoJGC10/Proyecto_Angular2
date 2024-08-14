@@ -8,7 +8,7 @@ import { EmpleadoService } from '../../../layout/servicios/empleado.service';
 @Component({
   selector: 'app-empleados-form',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './empleados-form.component.html',
   styleUrl: './empleados-form.component.css'
 })
@@ -31,8 +31,6 @@ export class EmpleadosFormComponent implements OnChanges {
       email: new FormControl('', [Validators.required]),
       phone: new FormControl('', [Validators.required]),
       department: new FormControl('', [Validators.required]),
-
-
     });
     this.cargarRegistros();
   }
@@ -44,8 +42,6 @@ export class EmpleadosFormComponent implements OnChanges {
         email: this.data.email,
         phone: this.data.phone,
         department: this.data.department,
-
-
       });
     }
   }
@@ -65,79 +61,89 @@ export class EmpleadosFormComponent implements OnChanges {
 
   ordenarRegistros() {
     this.registros.sort((a, b) => {
-      // Verificar si a.id_categorie y b.id_categorie están definidos
       if (a.employee_id && b.employee_id) {
-        // Convertir a.id_categorie y b.id_categorie a números para la comparación
-        const idA = +a.employee_id; // O parseInt(a.id_categorie, 10) si es necesario
-        const idB = +b.employee_id; // O parseInt(b.id_categorie, 10) si es necesario
-        if (idA < idB) return -1;
-        if (idA > idB) return 1;
-        return 0;
+        const idA = +a.employee_id;
+        const idB = +b.employee_id;
+        return idA - idB;
       }
-      return 0; // Manejar el caso donde a.id_categorie o b.id_categorie es undefined
+      return 0; // Manejar el caso donde a.employee_id o b.employee_id es undefined
     });
   }
-  
 
   onClose() {
     this.onCloseModel.emit(false);
   }
 
   onSubmit() {
-  if (this.empleadoForm.valid) {
-    const empleadoData = this.empleadoForm.value;
-
-    console.log('Form data:', empleadoData);
-    console.log('Current data:', this.data);
-    console.log('Category ID for update:', this.data ? this.data.employee_id : 'No ID');
-
-    if (this.data && this.data.employee_id) {
-      console.log('Updating existing category');
-      // Actualización de categoría existente
-      this.empleadoService
-        .updateCategoria(this.data.employee_id, empleadoData)
-        .subscribe({
+    if (this.empleadoForm.valid) {
+      const empleadoData = this.empleadoForm.value;
+  
+      console.log('Form data:', empleadoData);
+      console.log('Current data:', this.data);
+      console.log('Employee ID for update:', this.data ? this.data.employee_id : 'No ID');
+  
+      if (this.data && this.data.employee_id) {
+        console.log('Updating existing employee');
+        this.empleadoService
+          .updateCategoria(this.data.employee_id, empleadoData)
+          .subscribe({
+            next: (response) => {
+              // Verificamos si la respuesta tiene un campo 'data'
+              const updatedEmpleado = response.data ? response.data : (response as unknown as EmpleadosInterface);
+  
+              if (updatedEmpleado && updatedEmpleado.employee_id) {
+                const index = this.registros.findIndex(
+                  (r) => r.employee_id === this.data!.employee_id
+                );
+                if (index !== -1) {
+                  this.registros[index] = updatedEmpleado;
+                  this.ordenarRegistros(); // Ordenar por id después de actualizar
+                }
+                this.toastrService.success('Employee updated successfully');
+                this.empleadoForm.reset();
+                this.onClose();
+              } else {
+                console.error('Error: La respuesta del servidor no contiene datos válidos.');
+                this.toastrService.error('Error actualizando empleado: respuesta vacía o inválida');
+              }
+            },
+            error: (err) => {
+              console.error('Error updating employee:', err);
+              this.toastrService.error('Error updating employee');
+            },
+          });
+      } else {
+        console.log('Creating new employee');
+        this.empleadoService.createCategoria(empleadoData).subscribe({
           next: (response) => {
-            const updatedempleado = response.data;
-            const index = this.registros.findIndex(
-              (r) => r.employee_id === this.data!.employee_id
-            );
-            if (index !== -1) {
-              this.registros[index] = updatedempleado;
-              this.ordenarRegistros(); // Ordenar por id después de actualizar
+            // Verificamos si la respuesta tiene un campo 'data'
+            const newEmpleado = response.data ? response.data : (response as unknown as EmpleadosInterface);
+  
+            if (newEmpleado && newEmpleado.employee_id) {
+              this.registros.push(newEmpleado);
+              this.ordenarRegistros(); // Ordenar por id después de crear
+              this.toastrService.success('Employee created successfully');
+              this.empleadoForm.reset();
+              this.onClose();
+            } else {
+              console.error('Error: La respuesta del servidor no contiene datos válidos.');
+              this.toastrService.error('Error creando empleado: respuesta vacía o inválida');
             }
-            this.toastrService.success('Category updated successfully');
-            this.empleadoForm.reset();
-            this.onClose();
           },
           error: (err) => {
-            console.error('Error updating category:', err);
-            this.toastrService.error('Error updating category');
+            console.error('Error creating employee:', err);
+            this.toastrService.error('Error creating employee');
           },
         });
+      }
     } else {
-      console.log('Creating new category');
-      // Creación de nueva categoría
-      this.empleadoService.createCategoria(empleadoData).subscribe({
-        next: (response) => {
-          const newempleado = response.data;
-          this.registros.push(newempleado);
-          this.ordenarRegistros(); // Ordenar por id después de crear
-          this.toastrService.success('Category created successfully');
-          this.empleadoForm.reset();
-          this.onClose();
-        },
-        error: (err) => {
-          console.error('Error creating category:', err);
-          this.toastrService.error('Error creating category');
-        },
-      });
+      this.toastrService.warning('Please complete all required fields correctly');
+      this.empleadoForm.markAllAsTouched();
     }
-  } else {
-    this.toastrService.warning('Por favor complete todos los campos correctamente');
-    this.empleadoForm.markAllAsTouched();
   }
-}
+  
 
+  
 
+  
 }

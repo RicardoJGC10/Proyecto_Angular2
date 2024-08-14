@@ -20,25 +20,27 @@
 
 
   
-  .gallery-item {
-    flex: 1 1 calc(20% - 10px); /* Ajusta el ancho de las imágenes para que quepan 5 en una fila con un espacio de 10px entre ellas */
-    box-sizing: border-box; /* Incluye el padding y border en el ancho total */
-    padding: 5px; /* Espacio interno opcional */
-    background-color: #fff; /* Fondo blanco opcional */
-    border: 1px solid #ddd; /* Borde opcional */
-    border-radius: 5px; /* Bordes redondeados opcionales */
-    text-align: center; /* Centra el texto */
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ddd; /* Añade un borde si es necesario */
+  padding: 10px; /* Ajusta el espacio interno */
+  height: 100%; /* Asegura que el contenedor ocupe todo el espacio disponible */
+}
+
+  .gallery-item img {
+    max-width: 100%;
+    height: auto;
   }
   
-  .gallery-item img {
-    width: 100%; /* Hace que la imagen ocupe el ancho completo del contenedor */
-    height: auto; /* Mantiene la proporción de la imagen */
-    display: block; /* Elimina el espacio en línea debajo de la imagen */
-    margin-bottom: 10px; /* Espacio debajo de la imagen */
-  }
+  
   
   .gallery-info {
-    padding: 0 5px; /* Espacio interno */
+    margin-top: auto; /* Empuja la información hacia la parte inferior */
+    text-align: center; /* Centra el texto */
+    width: 100%;
   }
   
   .product-name {

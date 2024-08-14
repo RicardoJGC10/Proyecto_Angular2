@@ -1,0 +1,17 @@
+/* header.component.css */
+.app-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    /* Otros estilos aquí */
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #333;
+    /* Otros estilos relacionados con el header */
+}
+/* sidebar.component.css */
+.app-sidebar.collapsed {
+    width: 60px; /* O el ancho que desees cuando esté colapsado */
+    transition: width 0.3s;
+}
+

@@ -20,7 +20,6 @@ import { SalesService } from '../../servicios/sales.service';
 export class DashboardComponent implements OnInit {
   isCollapsed: boolean = false;
 
-  topProductName: string = 'Producto';
   quantitySold: number = 0;
   totalSales: number = 0;
   salesCount: number = 0;
@@ -28,6 +27,8 @@ export class DashboardComponent implements OnInit {
 
   firstName: string = '';
   lastName: string = '';
+  topProductName: string = 'Nombre del Producto Ejemplo';
+
 
   constructor(
     private userService: UserService,
@@ -40,6 +41,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.firstName = this.userService.getFirstName();
     this.lastName = this.userService.getLastName();
+    this.adjustFontSize();
 
     // Obtener el producto más vendido
     this.bestselling.getBestSellingProduct().subscribe(data => {
@@ -93,4 +95,19 @@ export class DashboardComponent implements OnInit {
     console.log('Sidebar toggle clicked');
     this.isCollapsed = !this.isCollapsed;
   }
+
+  
+adjustFontSize() {
+  const productNameElement = document.querySelector('.widget-stats-amount') as HTMLElement;
+  if (productNameElement) {
+    const productNameLength = this.topProductName.length;
+    if (productNameLength > 20) {
+      productNameElement.style.fontSize = '0.9rem';
+    } else {
+      productNameElement.style.fontSize = '1.2rem';
+    }
+  }
+}
+
+
 }

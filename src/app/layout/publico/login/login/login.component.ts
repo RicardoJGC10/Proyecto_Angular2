@@ -37,6 +37,12 @@ export class LoginComponent {
   }
 
   onLogin() {
+    // Verificar si los campos están vacíos
+    if (!this.loginObj.username || !this.loginObj.password) {
+      alert('Por favor, complete todos los campos.');
+      return;
+    }
+  
     this.http.post('https://seguridadenaplicaciones.site/api/login/', this.loginObj).subscribe(
       (res: any) => {
         console.log('Response from server:', res);
@@ -55,18 +61,19 @@ export class LoginComponent {
       },
       (error: HttpErrorResponse) => {
         console.error('Error during login:', error);
-        if (error.status === 401) {
-          alert('Unauthorized');
-        } else if (error.status === 400) {
-          alert('No puede haber campos vacíos');
+        if (error.status === 400) {
+          alert('Solicitud incorrecta. Por favor, verifique los datos ingresados.');
+        } else if (error.status === 401) {
+          alert('Usuario o contraseña incorrectos.');
         } else if (error.status === 403) {
-          alert('Usuario no autorizado');
+          alert('Usuario no autorizado.');
         } else {
-          alert('An error occurred during login. Please try again.');
+          alert('Ocurrió un error durante el inicio de sesión. Por favor, intente de nuevo.');
         }
       }
     );
   }
+  
   
 
 

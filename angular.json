@@ -29,45 +29,33 @@
                "src/assets"
             ],
             "styles": [
+
               "src/styles.css",
               "src/assets/css/custom.css",
               "src/assets/css/main.css",
-              "src/assets/css/horizontal-menu.css",
               "src/assets/plugins/bootstrap/css/bootstrap.min.css",
               "src/assets/plugins/perfectscroll/perfect-scrollbar.css",
               "src/assets/plugins/pace/pace.css",
-              "src/assets/plugins/datatables/datatables.min.css",
               "src/assets/plugins/highlight/styles/github-gist.css",
-              "src/assets/css/theme.css",
-              "src/assets/css/plugin/subscribe-better.css",
-              "src/assets/css/plugin/animate.css",
-              "src/assets/css/plugin/owl.carousel.css",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.min.css"
+              "src/assets/css/theme.css"
+             
 
               
             ],
             "scripts": [
+
               "src/assets/plugins/jquery/jquery-3.5.1.min.js",
-              "src/assets/plugins/bootstrap/js/bootstrap.min.js",
               "src/assets/plugins/perfectscroll/perfect-scrollbar.min.js",
               "src/assets/plugins/pace/pace.min.js",
               "src/assets/plugins/apexcharts/apexcharts.min.js",
               "src/assets/js/main.min.js",
               "src/assets/js/custom.js",
-              "src/assets/js/pages/dashboard.js",
-              "src/assets/js/pages/datatables.js",
-              "src/assets/plugins/datatables/datatables.min.js",
               "src/assets/plugins/highlight/highlight.pack.js",
               "src/assets/plugins/bootstrap/js/popper.min.js",
               "node_modules/apexcharts/dist/apexcharts.min.js",
               "src/assets/js/theme.js",
-              "src/assets/js/plugin/jquery.subscribe-better.min.js",
-              "src/assets/js/plugin/jquery.countdown.js",
-              "src/assets/js/plugin/jquery.plugin.min.js",
-              "src/assets/js/plugin/owl.carousel.min.js",
-              "src/assets/js/plugin/bootstrap-select.min.js",
-              "src/assets/js/plugin/bootstrap.min.js",
-              "src/assets/js/plugin/jquery-2.2.4.min.js"
+              "src/assets/plugins/bootstrap/js/bootstrap.min.js"
+              
             ]
           },
           "configurations": {
